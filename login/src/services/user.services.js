@@ -1,10 +1,11 @@
 // movieService.js
 const connectDB = require("../modal/db");
 
-async function getMovies(limit = 10) {
+async function listMovies() {
   const db = await connectDB();
-  const movies = db.collection("movies");
-  return movies.find().limit(limit).toArray();
+  return db.collection("movies").find({}).toArray();
 }
 
-module.exports = { getMovies };
+module.exports = { listMovies };
+
+
