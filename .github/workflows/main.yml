@@ -41,4 +41,4 @@ jobs:
       - name: Deploy to Vercel
         run: |
           cd login
-          vercel deploy --prod --yes --token ${{ secrets.REACT_TOKEN }}
+          vercel deploy --prod --yes --token ${{ secrets.node_js }}
