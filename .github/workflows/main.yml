@@ -1,4 +1,4 @@
-name: node JS CI/CD 
+name: Node JS CI/CD
 
 on:
   push:
@@ -28,17 +28,17 @@ jobs:
         run: npm run build
         working-directory: login
 
-
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-test
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
       - name: Deploy to Vercel
         run: |
-          npm install -g vercel
-          vercel deploy --prod --token ${{ secrets.REACT_TOKEN }} \
-            --yes --confirm \
-            --cwd login
+          cd login
+          vercel deploy --prod --yes --token ${{ secrets.node_js }}
